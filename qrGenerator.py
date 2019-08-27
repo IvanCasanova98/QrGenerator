@@ -12,10 +12,11 @@ def crearqr(nombre):
     qr.add_data(nombre)
     qr.make(fit=True)
     img = qr.make_image(fill_color="blue", back_color="white")
-    img.save(nombre)
+    img.save(nombre + '.png')
 
 
 if '.txt' in sys.argv[1]:
     file = open(sys.argv[1], "r+")
     listName = file.readlines()
-    print(listName)
+    for name in listName:
+        crearqr(name.replace('\n', ""))
